@@ -1,4 +1,4 @@
-<!--#Einkaufslisten- Webanwendung
+#Einkaufslisten- Webanwendung
 
 ## Idee
 Eine Website die eine Einkaufsliste verwaltet, Einkäufe zu organisieren, Artikel hinzufügen, zu bearbeiten und zu löschen.
