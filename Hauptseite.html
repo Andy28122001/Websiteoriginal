@@ -14,11 +14,11 @@
             <h1>Heutiger Einkauf</h1>
         </div>
         <div class="nav-tabs">
-            <input type="text" class="search-input" placeholder="Suche">
+            <input type="text" id="search-input" class="search-input" placeholder="Suche">
         </div>
     </header>
 
-    <table>
+    <table id="productTable">
         <thead>
             <tr>
                 <th>Artikelname</th>
@@ -30,7 +30,7 @@
                 <th>Löschen</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="productTableBody">
             <tr>
                 <td>Banane</td>
                 <td>Obst</td>
@@ -38,7 +38,7 @@
                 <td>5 Stück</td>
                 <td>100 kcal</td>
                 <td><a href="edit.html"><img src="edit_icon.png" class="icon"></a></td>
-                <td><a href="delete.html"><img src="delete_icon.png" class="icon"></a></td>
+                <td><img src="delete_icon.png" class="icon delete-icon"></td>
             </tr>
             <tr>
                 <td>Apfel</td>
@@ -47,7 +47,7 @@
                 <td>3 Stück</td>
                 <td>80 kcal</td>
                 <td><a href="edit.html"><img src="edit_icon.png" class="icon"></a></td>
-                <td><a href="delete.html"><img src="delete_icon.png" class="icon"></a></td>
+                <td><img src="delete_icon.png" class="icon delete-icon"></td>
             </tr>
 
         </tbody>
@@ -56,5 +56,8 @@
     <div class="navigation-container">
         <a href="edit.html" class="add-product-button">Produkte hinzufügen</a>
     </div>
+    <script src="edit.js"></script>
+    <script src="Filter.js"></script>
+    <script src="bearbeiten.js"></script>
 </body>
 </html>

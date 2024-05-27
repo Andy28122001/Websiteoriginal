@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>ShoppingBag</title>
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
     <h1> Einkaufsliste<br> </h1>
     
-    <form action="Hauptseite.html" method ="post">
-
+    <form id="loginForm">
         <div>
             <input type="text" id="Benutzername" name="Benutzername" placeholder="Benutzername" required>
         </div>
-
         <br>
-
         <div>
             <input type="password" id="Pname" name="Pname" maxlength="12" placeholder="Passwort" required> 
         </div>
-
         <br>
-
         <div>
-            <input type="reset">
+            <input type="reset" value="Zurücksetzen">
         </div>
-
         <br>
-
         <div>
-            <input type="submit">
-
+            <input type="submit" value="Anmelden">
         </div>
     </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event){
+            event.preventDefault();
+        
+
+        const username = document.getElementById('Benutzername').value;
+        const password = document.getElementById('Pname').value;
+
+        const validUsername = 'admin';
+        const validPassword = 'admin123';
+
+        if (username === validUsername && password === validPassword){
+
+            localStorage.setItem('loggedInUser', username);
+
+            window.location.href = 'hauptseite.html';
+        }else{
+            alert('Ungültiger Benutzername oder Passwort.');
+        }
+    });
+    </script>
 </body>
 </html>
