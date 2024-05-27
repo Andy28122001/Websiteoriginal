@@ -1,4 +1,4 @@
-#Einkaufslisten- Webanwendung
+<!--#Einkaufslisten- Webanwendung
 
 ## Idee
 Eine Website die eine Einkaufsliste verwaltet, Einkäufe zu organisieren, Artikel hinzufügen, zu bearbeiten und zu löschen.
@@ -21,7 +21,3 @@ Die Website verwaltet die Einkaufslisten über eine Datenbank. Die Datenbank wir
 **Bearbeiten von Artikeln**: Neben Klicken auf eine Schaltfläche neben dem Artikel auf der Hautseite, öffnet sich ein Bearbeitungsmodus. Nutzer können dort Details ihres Einkaufs ändern. Mit dem Schließen speichert die Seite automatisch die vorgenommenen Änderungen
 **Löschen von Artikeln**: Schaltfläche neben dem Artikel auf der Hauptseite die es dem Nutzer ermöglicht, das einzelne Produkt zu löschen. Ein Bestätigungsfeld kommt auf, ob man diesen Artikel wirklich löschen möchte.
 **Anzeigen von Artikeln**: Mit einer Liste, die im Check Up (als Haken) schaut welche Artikel hinzugefügt wurden und diese dann auf der Hautseite anzeigt.
-
-
-
-

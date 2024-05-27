@@ -1,0 +1,30 @@
+h1{
+    text-align: center;
+    font-size: 4em;
+    font-family: Arial, sans-serif;
+    color: #000;
+}
+
+
+body{
+    background-color: #a8bca6;
+}
+
+form{
+    text-align: center;
+    margin-top: 50px;
+}
+input[type="text"], input[type="password"]{
+    display: block;
+    margin: auto ;
+    font-family: Arial, sans-serif;
+    
+}
+
+#Benutzername, #Pname{
+    font-size: 1.2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}

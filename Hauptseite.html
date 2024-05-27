@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="de">   
+<head>
+    <title>Gesamte Einkaufsliste </title>
+    <link rel="stylesheet" href="styleH.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="image-container">
+                <img src="einkaufswagen.png" class="header-image">
+            </span>
+            <h1>Heutiger Einkauf</h1>
+        </div>
+        <div class="nav-tabs">
+            <input type="text" class="search-input" placeholder="Suche">
+        </div>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Artikelname</th>
+                <th>Kategorie</th>
+                <th>Preis</th>
+                <th>Menge</th>
+                <th>Kalorien</th>
+                <th>Bearbeiten</th>
+                <th>Löschen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Banane</td>
+                <td>Obst</td>
+                <td>1,99€</td>
+                <td>5 Stück</td>
+                <td>100 kcal</td>
+                <td><a href="edit.html"><img src="edit_icon.png" class="icon"></a></td>
+                <td><a href="delete.html"><img src="delete_icon.png" class="icon"></a></td>
+            </tr>
+            <tr>
+                <td>Apfel</td>
+                <td>Obst</td>
+                <td>0,99€</td>
+                <td>3 Stück</td>
+                <td>80 kcal</td>
+                <td><a href="edit.html"><img src="edit_icon.png" class="icon"></a></td>
+                <td><a href="delete.html"><img src="delete_icon.png" class="icon"></a></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="navigation-container">
+        <a href="edit.html" class="add-product-button">Produkte hinzufügen</a>
+    </div>
+</body>
+</html>
