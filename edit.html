@@ -23,24 +23,24 @@
     <div class="product-grid">
         <div class="product" data-category="Obst">
             <img src="produkt1.png" alt="Produkt 1">
-            <h3>Produkt 1</h3>
+            <h3 id="productName1">Produkt 1</h3>
             <div class="product-details">
                 <label for="quantity1">Menge: <span id="quantityValue1">1</span></label>
                 <input type="range" id="quantity1" min="1" max="100" value="1" oninput="document.getElementById('quantityValue1').textContent = this.value">
-                <label>Preis (€): 1,99</label>
-                <label>Kalorien (kcal): 100</label>
+                <label id="productPrice1">Preis (€): 1,99</label>
+                <label id="productCalories1">Kalorien (kcal): 100</label>
                 <button type="button" class="save button">Speichern</button>
             </div>
         </div>
        
         <div class="product" data-category="Getränke">
             <img src="produkt2.png" alt="Produkt 2">
-            <h3>Produkt 2</h3>
+            <h3 id="productName2">Produkt 2</h3>
             <div class="product-details">
                 <label for="quantity2">Menge: <span id="quantityValue2">1</span></label>
                 <input type="range" id="quantity2" min="1" max="100" value="1" oninput="document.getElementById('quantityValue2').textContent = this.value">
-                <label>Preis (€): 2,99</label>
-                <label>Kalorien (kcal): 150</label>
+                <label id="productPrice2">Preis (€): 2,99</label>
+                <label id="productCalories2">Kalorien (kcal): 150</label>
                 <button type="button" class="save button">Speichern</button>
             </div>
         </div>
@@ -48,31 +48,31 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const saveButton = document.querySelector('.save.button'); 
+            const saveButtons = document.querySelectorAll('.save.button');
 
-    saveButton.addEventListener('click', function() {
-        const productName = document.getElementById('productName').value;
-        const productCategory = document.getElementById('productCategory').value;
-        const productPrice = document.getElementById('productPrice').value;
-        const productQuantity = document.getElementById('productQuantity').value;
-        const productCalories = document.getElementById('productCalories').value;
+            saveButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    const productName = document.getElementById(`productName${index + 1}`).textContent;
+                    const productPrice = document.getElementById(`productPrice${index + 1}`).textContent.split(': ')[1];
+                    const productCalories = document.getElementById(`productCalories${index + 1}`).textContent.split(': ')[1];
+                    const productQuantity = document.getElementById(`quantityValue${index + 1}`).textContent;
 
-        const product = {
-            name: productName,
-            category: productCategory,
-            price: productPrice,
-            quantity: productQuantity,
-            calories: productCalories,
-        };
+                    const product = {
+                        name: productName,
+                        price: productPrice,
+                        quantity: productQuantity,
+                        calories: productCalories,
+                    };
 
-        let products = JSON.parse(localStorage.getItem('products')) || [];
-        products.push(product);
-        localStorage.setItem('products', JSON.stringify(products));
+                    let products = JSON.parse(localStorage.getItem('products')) || [];
+                    products.push(product);
+                    localStorage.setItem('products', JSON.stringify(products));
 
-        alert('Produkt gespeichert');
-        window.location.href = 'hauptseite.html'; // Zurück zur Hauptseite
-    });
-});
+                    alert('Produkt gespeichert');
+                    window.location.href = 'hauptseite.html'; 
+                });
+            });
+        });
     </script>
 
 </body>
