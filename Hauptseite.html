@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-
-<html lang="de">   
+<html lang="de">
 <head>
-    <title>Gesamte Einkaufsliste </title>
+    <meta charset="UTF-8">
+    <title>Gesamte Einkaufsliste</title>
     <link rel="stylesheet" href="styleH.css">
 </head>
 <body>
@@ -31,25 +31,7 @@
             </tr>
         </thead>
         <tbody id="productTableBody">
-            <tr>
-                <td>Banane</td>
-                <td>Obst</td>
-                <td>1,99€</td>
-                <td>5 Stück</td>
-                <td>100 kcal</td>
-                <td><a href="edit.html"><img src="edit_icon.png" class="icon"></a></td>
-                <td><img src="delete_icon.png" class="icon delete-icon"></td>
-            </tr>
-            <tr>
-                <td>Apfel</td>
-                <td>Obst</td>
-                <td>0,99€</td>
-                <td>3 Stück</td>
-                <td>80 kcal</td>
-                <td><a href="edit.html"><img src="edit_icon.png" class="icon"></a></td>
-                <td><img src="delete_icon.png" class="icon delete-icon"></td>
-            </tr>
-
+            
         </tbody>
     </table>
 
@@ -58,6 +40,40 @@
     </div>
     <script src="edit.js"></script>
     <script src="Filter.js"></script>
-    <script src="bearbeiten.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('http://localhost:3000/products')
+                .then(response => response.json())
+                .then(data => {
+                    const productTableBody = document.getElementById('productTableBody');
+                    data.forEach(product => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${product.name}</td>
+                            <td>${product.category}</td>
+                            <td>${product.price}</td>
+                            <td>${product.quantity}</td>
+                            <td>${product.calories}</td>
+                            <td><button onclick="editProduct(${product.id})">Bearbeiten</button></td>
+                            <td><button onclick="deleteProduct(${product.id})">Löschen</button></td>
+                        `;
+                        productTableBody.appendChild(row);
+                    });
+                });
+        });
+
+        function deleteProduct(id) {
+            fetch(`http://localhost:3000/products/${id}`, {
+                method: 'DELETE'
+            })
+            .then(() => {
+                alert('Produkt gelöscht');
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Fehler:', error);
+            });
+        }
+    </script>
 </body>
 </html>

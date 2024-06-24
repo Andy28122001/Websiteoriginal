@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
     const table = document.getElementById('productTable');
 
     table.addEventListener('click', function(event) {
         const target = event.target;
         if (target.classList.contains('edit-icon')) {
-          
             const row = target.closest('tr');
             const cells = row.querySelectorAll('td');
             const product = {
@@ -18,17 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('editProduct', JSON.stringify(product));
             window.location.href = 'edit.html';
         } else if (target.classList.contains('delete-icon')) {
-           
             const row = target.closest('tr');
-            row.remove();
             const productName = row.querySelector('td:first-of-type').textContent;
+            row.remove();
             let products = JSON.parse(localStorage.getItem('products')) || [];
             products = products.filter(p => p.name !== productName);
             localStorage.setItem('products', JSON.stringify(products));
         }
     });
-});
-    
+
     const productTableBody = document.getElementById('productTableBody');
     const products = JSON.parse(localStorage.getItem('products')) || [];
     products.forEach(function(product) {
@@ -44,3 +40,4 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         productTableBody.appendChild(row);
     });
+});

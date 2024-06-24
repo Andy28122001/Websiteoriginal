@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Produkte hinzufuegen</title> 
+    <title>Produkte hinzufügen</title>
     <link rel="stylesheet" href="styleE.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
                 <button type="button" class="save button">Speichern</button>
             </div>
         </div>
-       
+
         <div class="product" data-category="Getränke">
             <img src="produkt2.png" alt="Produkt 2">
             <h3 id="productName2">Produkt 2</h3>
@@ -56,24 +56,34 @@
                     const productPrice = document.getElementById(`productPrice${index + 1}`).textContent.split(': ')[1];
                     const productCalories = document.getElementById(`productCalories${index + 1}`).textContent.split(': ')[1];
                     const productQuantity = document.getElementById(`quantityValue${index + 1}`).textContent;
+                    const productCategory = document.querySelector(`.product[data-category]`).dataset.category;
 
                     const product = {
                         name: productName,
                         price: productPrice,
-                        quantity: productQuantity,
-                        calories: productCalories,
+                        quantity: productQuantity + ' Stück',
+                        calories: productCalories + ' kcal',
+                        category: productCategory
                     };
 
-                    let products = JSON.parse(localStorage.getItem('products')) || [];
-                    products.push(product);
-                    localStorage.setItem('products', JSON.stringify(products));
-
-                    alert('Produkt gespeichert');
-                    window.location.href = 'hauptseite.html'; 
+                    fetch('http://localhost:3000/products', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Produkt gespeichert');
+                        window.location.href = 'hauptseite.html'; 
+                    })
+                    .catch(error => {
+                        console.error('Fehler:', error);
+                    });
                 });
             });
         });
     </script>
-
 </body>
 </html>
